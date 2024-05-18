@@ -5,13 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky.employeeAccountingProgram.Employee;
-import pro.sky.employeeAccountingProgram.exceptions.EmployeeAlreadyAddedException;
-import pro.sky.employeeAccountingProgram.exceptions.EmployeeNotFoundException;
-import pro.sky.employeeAccountingProgram.exceptions.EmployeeStorageIsFullException;
 import pro.sky.employeeAccountingProgram.service.EmployeeService;
 
 import java.util.Collection;
-import java.util.List;
 
 @RestController
 @RequestMapping("employee")
