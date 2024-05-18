@@ -10,6 +10,7 @@ import pro.sky.employeeAccountingProgram.exceptions.EmployeeNotFoundException;
 import pro.sky.employeeAccountingProgram.exceptions.EmployeeStorageIsFullException;
 import pro.sky.employeeAccountingProgram.service.EmployeeService;
 
+import java.util.Collection;
 import java.util.List;
 
 @RestController
@@ -23,40 +24,28 @@ public class EmployeeController {
     }
 
     @GetMapping()
-    public List<Employee> print() {
+    public Collection<Employee> printEmployees() {
         return employeeService.printEmployees();
     }
 
     @GetMapping("add")
-    public EmployeeService add(@RequestParam("firstname") String firstName,
-                               @RequestParam("lastname") String lastName) {
-        try {
-            employeeService.addEmployee(firstName, lastName);
-        } catch (EmployeeStorageIsFullException | EmployeeAlreadyAddedException e) {
-            System.out.println(e.getMessage());
-        }
-        return employeeService;
+    public Employee addEmployee(@RequestParam("firstname") String firstName,
+                                @RequestParam("lastname") String lastName) {
+
+        return employeeService.addEmployee(firstName, lastName);
     }
 
     @GetMapping("remove")
-    public EmployeeService remove(@RequestParam("firstname") String firstName,
-                                  @RequestParam("lastname") String lastName) {
-        try {
-            employeeService.removeEmployee(firstName, lastName);
-        } catch (EmployeeNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-        return employeeService;
+    public Employee removeEmployee(@RequestParam("firstname") String firstName,
+                                   @RequestParam("lastname") String lastName) {
+
+        return employeeService.removeEmployee(firstName, lastName);
     }
 
     @GetMapping("find")
-    public EmployeeService find(@RequestParam("firstname") String firstName,
-                                @RequestParam("lastname") String lastName) {
-        try {
-            employeeService.findEmployee(firstName, lastName);
-        } catch (EmployeeNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-        return employeeService;
+    public Employee findEmployee(@RequestParam("firstname") String firstName,
+                                 @RequestParam("lastname") String lastName) {
+
+        return employeeService.findEmployee(firstName, lastName);
     }
 }
